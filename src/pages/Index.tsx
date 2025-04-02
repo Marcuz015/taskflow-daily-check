@@ -8,32 +8,32 @@ import { Task } from '@/components/TaskList';
 
 const generateId = () => Math.random().toString(36).substring(2, 9);
 
-// Default categories
-const defaultCategories = ['Work', 'Personal', 'Errands', 'Health'];
+// Categorias padrão
+const defaultCategories = ['Trabalho', 'Pessoal', 'Recados', 'Saúde'];
 
-// Sample tasks for first-time users
+// Tarefas de exemplo para novos usuários
 const sampleTasks: Task[] = [
-  { id: generateId(), text: 'Complete project proposal', completed: false, category: 'Work' },
-  { id: generateId(), text: 'Go grocery shopping', completed: true, category: 'Errands' },
-  { id: generateId(), text: 'Morning workout', completed: false, category: 'Health' },
+  { id: generateId(), text: 'Completar proposta de projeto', completed: false, category: 'Trabalho' },
+  { id: generateId(), text: 'Fazer compras no mercado', completed: true, category: 'Recados' },
+  { id: generateId(), text: 'Exercícios matinais', completed: false, category: 'Saúde' },
 ];
 
 const Index = () => {
   const { toast } = useToast();
   const [tasks, setTasks] = useState<Task[]>([]);
   
-  // Load tasks from localStorage on initial load
+  // Carrega tarefas do localStorage na inicialização
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
       setTasks(JSON.parse(savedTasks));
     } else {
-      // If no tasks found, set sample tasks for new users
+      // Se não encontrar tarefas, define as tarefas de exemplo para novos usuários
       setTasks(sampleTasks);
     }
   }, []);
   
-  // Save tasks to localStorage whenever they change
+  // Salva tarefas no localStorage sempre que elas mudam
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
@@ -49,8 +49,8 @@ const Index = () => {
     setTasks((prevTasks) => [newTask, ...prevTasks]);
     
     toast({
-      title: "Task added",
-      description: `"${text}" has been added to your list.`,
+      title: "Tarefa adicionada",
+      description: `"${text}" foi adicionada à sua lista.`,
     });
   };
   
@@ -68,13 +68,13 @@ const Index = () => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     
     toast({
-      title: "Task deleted",
-      description: taskToDelete ? `"${taskToDelete.text}" has been removed.` : "Task has been removed.",
+      title: "Tarefa excluída",
+      description: taskToDelete ? `"${taskToDelete.text}" foi removida.` : "Tarefa foi removida.",
       variant: "destructive",
     });
   };
   
-  // Get unique categories from tasks plus the default ones
+  // Obtém categorias únicas das tarefas mais as padrão
   const categories = Array.from(
     new Set([
       ...defaultCategories,

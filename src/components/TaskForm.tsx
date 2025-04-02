@@ -27,14 +27,14 @@ const TaskForm = ({ onAddTask, categories }: TaskFormProps) => {
       <div className="flex items-center space-x-2">
         <Input
           type="text"
-          placeholder="Add a new task..."
+          placeholder="Adicionar uma nova tarefa..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           className="flex-1"
         />
         <Button type="submit" disabled={!text.trim()}>
           <PlusCircle className="h-4 w-4 mr-2" />
-          Add
+          Adicionar
         </Button>
       </div>
       <CategorySelector 

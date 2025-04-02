@@ -9,7 +9,7 @@ const Header = () => {
         <h1 className="text-2xl font-bold">TaskFlow</h1>
       </div>
       <div className="text-sm text-muted-foreground">
-        Organize your daily tasks
+        Organize suas tarefas diárias
       </div>
     </header>
   );

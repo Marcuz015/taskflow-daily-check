@@ -48,14 +48,14 @@ const TaskList = ({ tasks, onToggleTask, onDeleteTask, categories }: TaskListPro
             size="sm"
             onClick={() => setFilter('all')}
           >
-            All
+            Todas
           </Button>
           <Button 
             variant={filter === 'active' ? 'default' : 'outline'} 
             size="sm"
             onClick={() => setFilter('active')}
           >
-            Active
+            Ativas
           </Button>
           <Button 
             variant={filter === 'completed' ? 'default' : 'outline'} 
@@ -63,7 +63,7 @@ const TaskList = ({ tasks, onToggleTask, onDeleteTask, categories }: TaskListPro
             onClick={() => setFilter('completed')}
           >
             <CheckCheck className="h-4 w-4 mr-1" />
-            Completed
+            Concluídas
           </Button>
         </div>
         <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ const TaskList = ({ tasks, onToggleTask, onDeleteTask, categories }: TaskListPro
             value={categoryFilter || ''}
             onChange={(e) => setCategoryFilter(e.target.value || null)}
           >
-            <option value="">All Categories</option>
+            <option value="">Todas Categorias</option>
             {categories.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
@@ -85,7 +85,7 @@ const TaskList = ({ tasks, onToggleTask, onDeleteTask, categories }: TaskListPro
       
       {filteredTasks.length === 0 ? (
         <div className="text-center py-8 text-muted-foreground">
-          No tasks match your filters
+          Nenhuma tarefa corresponde aos seus filtros
         </div>
       ) : (
         <div className="space-y-2 mt-4">
@@ -104,7 +104,7 @@ const TaskList = ({ tasks, onToggleTask, onDeleteTask, categories }: TaskListPro
       )}
       
       <div className="text-sm text-muted-foreground text-center py-2">
-        {tasks.filter(t => t.completed).length} of {tasks.length} tasks completed
+        {tasks.filter(t => t.completed).length} de {tasks.length} tarefas concluídas
       </div>
     </div>
   );
